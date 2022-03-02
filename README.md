@@ -1,6 +1,5 @@
-# Foobar
 
-#Blog App using MERN stack
+# Blog App using MERN stack
 
 # I have sent all env variable to mail
 
