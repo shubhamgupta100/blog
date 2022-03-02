@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import LoginSignUp from "./components/User/LoginSignUp";
 import NewBlog from "./components/Blog/NewBlog";
 import BlogDetails from "./components/Blog/BlogDetails";
+import NotFound from "./components/layout/NotFound/NotFound";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/login" element={<LoginSignUp />} />
           <Route exact path="/blog/new" element={<NewBlog />} />
           <Route exact path="/blog/:id" element={<BlogDetails />} />
+          <Route path="*" exact={true} element={<NotFound />} />
         </Routes>
       </Router>
     </>
