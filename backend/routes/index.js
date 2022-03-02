@@ -7,7 +7,7 @@ const router = express.Router();
 router.use("/api", require("./api"));
 
 const storageEngine = multer.diskStorage({
-  destination: "C:/Users/SHUBHAM GUPTA/Desktop/Shubham Gupta/blog-app/public",
+  destination: "public",
   filename: function (req, file, callback) {
     callback(
       null,
@@ -37,5 +37,4 @@ router.post("/api/v1/blog/new", upload.single("blog_image"), (req, res) => {
   });
 });
 
-// router.get("/blogs/:id", blogDetails);
 module.exports = router;
