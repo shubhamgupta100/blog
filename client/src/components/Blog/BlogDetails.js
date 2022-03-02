@@ -13,8 +13,8 @@ export default function BlogDetails() {
   const alert = useAlert();
   const navigate = useNavigate();
   let { id } = useParams();
-  let baseUrl = "http://localhost:7000";
-  let image_url = baseUrl + "/img/" + blog.imageName;
+  // let baseUrl = "http://localhost:7000";
+  let image_url = "/img/" + blog.imageName;
   useEffect(() => {
     dispatch(getBlogDetails(id));
   }, [dispatch, id]);
