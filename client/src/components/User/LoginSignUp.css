@@ -9,18 +9,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(231, 231, 231);
   position: fixed;
-  top: 0%;
+  top: 7%;
   left: 0;
 }
 
 .LoginSignUpBox {
-  background-color: white;
+  background-color: rgb(247, 247, 247);
   width: 25vw;
   height: 70vh;
   box-sizing: border-box;
   overflow: hidden;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px;
 }
 .login_signUp_toggle {
   display: flex;

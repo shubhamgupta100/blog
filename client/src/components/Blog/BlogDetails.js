@@ -5,11 +5,13 @@ import { getBlogs, getBlogDetails, deleteBlog } from "../../actions/blogAction";
 import { useAlert } from "react-alert";
 
 import Loader from "../layout/Loader/Loader";
+import { loadUser } from "../../actions/userAction";
 import "./blogDetail.css";
 export default function BlogDetails() {
   const dispatch = useDispatch();
   const { blog, loading } = useSelector((state) => state.blogDetails);
   const { message, status } = useSelector((state) => state.delUpdBlog);
+  const { isAuthenticated } = useSelector((state) => state.user);
   const alert = useAlert();
   const navigate = useNavigate();
   let { id } = useParams();
@@ -17,6 +19,7 @@ export default function BlogDetails() {
   let image_url = "/img/" + blog.imageName;
   useEffect(() => {
     dispatch(getBlogDetails(id));
+    dispatch(loadUser());
   }, [dispatch, id]);
   const handleDelete = (e) => {
     e.preventDefault();
@@ -39,24 +42,30 @@ export default function BlogDetails() {
           <div className="update-delete">
             <h1>id : {blog._id}</h1>
             <div>
-              <div>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  onClick={handleUpdate}
-                >
-                  Update Blog
-                </button>
-              </div>
-              <div>
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  onClick={handleDelete}
-                >
-                  Delete Blog
-                </button>
-              </div>
+              {isAuthenticated ? (
+                <>
+                  <div>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      onClick={handleUpdate}
+                    >
+                      Update Blog
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      onClick={handleDelete}
+                    >
+                      Delete Blog
+                    </button>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div>
