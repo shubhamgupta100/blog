@@ -6,9 +6,7 @@ import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 import "./blog.css";
 import { useSelector, useDispatch } from "react-redux";
-import { createBlog } from "../../actions/blogAction";
-import { NEW_BLOG_RESET } from "../../actions/actionType";
-
+import { getBlogs, createBlog } from "../../actions/blogAction";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -29,7 +27,6 @@ export default function NewBlog() {
     if (success && success == 1) {
       alert.success("Blog added !");
       navigate("/");
-      dispatch({ type: NEW_BLOG_RESET });
     }
   }, [dispatch, alert, navigate, success]);
   const handleImage = (e) => {
@@ -42,8 +39,7 @@ export default function NewBlog() {
     let form = document.getElementById("form");
     let formData = new FormData(form);
     dispatch(createBlog(formData));
-
-    dispatch({ type: NEW_BLOG_RESET });
+    dispatch(getBlogs());
     alert.success("Blog added !");
     navigate("/");
   };

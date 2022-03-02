@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getBlogDetails, deleteBlog } from "../../actions/blogAction";
+import { getBlogs, getBlogDetails, deleteBlog } from "../../actions/blogAction";
 import { useAlert } from "react-alert";
 
 import Loader from "../layout/Loader/Loader";
@@ -21,6 +21,7 @@ export default function BlogDetails() {
   const handleDelete = (e) => {
     e.preventDefault();
     dispatch(deleteBlog(id));
+    dispatch(getBlogs());
     alert.success(`Blog deleted !`);
     navigate("/");
   };
